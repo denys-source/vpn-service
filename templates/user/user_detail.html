@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="container mt-5">
+    <h2>Profile Information</h2>
+    <div class="card mt-3">
+      <div class="card-body">
+        <h5 class="card-title">
+          Name:
+          {% if user.first_name or user.last_name %}
+            {% if user.first_name %}{{ user.first_name }}{% endif %}
+            {% if user.first_name and user.last_name %}&nbsp;{% endif %}
+            {% if user.last_name %}{{ user.last_name }}{% endif %}
+          {% else %}
+            <span class="text-muted">not set</span>
+          {% endif %}
+        </h5>
+        {% if user.email %}<p class="card-text">Email: {{ user.email }}</p>{% endif %}
+        <a href="{% url 'user:update_profile' %}" class="btn btn-primary">Update Profile</a>
+      </div>
+    </div>
+  </div>
+{% endblock content %}
