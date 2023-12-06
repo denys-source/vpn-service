@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>Profile Information</h2>
+  <div class="card mt-3">
+    <div class="card-body">
+      {% if user.first_name %}<p class="card-text">First name: {{ user.first_name }}</p>{% endif %}
+      {% if user.last_name %}<p class="card-text">Last name: {{ user.last_name }}</p>{% endif %}
+      {% if user.email %}<p class="card-text">Email: {{ user.email }}</p>{% endif %}
+      <a href="{% url 'user:update_profile' %}" class="btn btn-primary">Update Profile</a>
+    </div>
+  </div>
+{% endblock content %}
