@@ -11,4 +11,5 @@ urlpatterns = [
     path(
         "accounts/confirm-logout/", LogoutConfirmation.as_view(), name="confirm_logout"
     ),
+    path("", include("vpn.urls", namespace="vpn")),
 ]

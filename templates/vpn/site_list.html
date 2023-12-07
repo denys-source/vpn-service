@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+  <h3>Your sites</h3>
+  {% if site_list %}
+    <div class="row">
+      {% for site in site_list %}
+        <div class="col-md-4 mb-4">
+          <div class="card">
+            <div class="card-body">
+              <p class="card-text">Domain: {{ site.domain }}</p>
+              <p class="card-text">Endpoint: {{ site.endpoint }}</p>
+              <a href="#" class="btn btn-primary" target="_blank">Open Website</a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p class="text-muted">You haven't added any sites yet</p>
+  {% endif %}
+{% endblock content %}
