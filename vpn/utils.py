@@ -1,7 +1,11 @@
 from urllib.parse import urljoin, urlparse
 
 from bs4 import BeautifulSoup
+from django.http.request import HttpRequest
 from django.urls import reverse
+from requests import Response
+
+from vpn.models import Statistics
 
 
 class LinkUpdater:
@@ -58,3 +62,18 @@ class LinkUpdater:
         self._update_src_links()
         self._update_action_links()
         return self._soup
+
+
+def update_statistics(
+    request: HttpRequest, response: Response, domain: str
+) -> None:
+    statistics, _ = Statistics.objects.get_or_create(
+        domain=domain, user=request.user
+    )
+
+    data_sent = len(response.request.body or "")
+    data_received = len(response.content)
+    statistics.page_clicks += 1
+    statistics.data_sent += data_sent
+    statistics.data_received += data_received
+    statistics.save()

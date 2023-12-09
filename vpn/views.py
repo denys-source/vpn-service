@@ -11,7 +11,7 @@ from requests.exceptions import RequestException
 
 from vpn.forms import SiteCreateForm
 from vpn.models import Site
-from vpn.utils import LinkUpdater
+from vpn.utils import LinkUpdater, update_statistics
 
 
 class SiteListView(LoginRequiredMixin, ListView):
@@ -43,9 +43,10 @@ def site_create_view(request: HttpRequest):
 
 @login_required
 def proxy_view(request: HttpRequest, domain: str, endpoint: str):
-    url = f"{urljoin(f"http://{domain}/", endpoint)}"
+    url = f"{urljoin(f'http://{domain}/', endpoint)}"
     try:
         resp = requests.get(url)
+        update_statistics(request, resp, domain)
     except RequestException:
         return HttpResponseBadRequest() 
     raw_soup = BeautifulSoup(resp.content, "html.parser")
