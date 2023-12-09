@@ -38,4 +38,4 @@ class Site(models.Model):
         ordering = ("-created_at",)
 
     def __str__(self) -> str:
-        return f"http://{urljoin(self.domain, self.endpoint)}"
+        return urljoin(f"http://{self.domain}", self.endpoint)
