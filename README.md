@@ -2,6 +2,13 @@
 
 VPN service with a web interface that allows users to add multiple sites and browse them using the website as a proxy. Routing appears as `localhost/{domain_name}/{routes_on_original_site}`. Returned page content dynamically replaces link attributes for seamless navigation. Links to external resources remain the same. The dashboard includes VPN site statistics, tracking page visits, and sent/received data volumes.
 
+## 🖥️ Check it out!
+
+http://165.22.77.123/sites/
+
+Username: `mark@mark.com`
+
+Password: `9zmyKbx6gTKXxdE`
 
 ## ⚙️ Installing using GitHub
 
