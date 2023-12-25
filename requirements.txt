@@ -9,11 +9,15 @@ Django==5.0
 django-crispy-forms==2.1
 django-stubs==4.2.6
 django-stubs-ext==4.2.5
+gunicorn==21.2.0
 idna==3.6
 mypy-extensions==1.0.0
 packaging==23.2
 pathspec==0.11.2
 platformdirs==4.1.0
+psycopg==3.1.16
+psycopg-binary==3.1.16
+psycopg2-binary==2.9.9
 python-dotenv==1.0.0
 requests==2.31.0
 soupsieve==2.5
@@ -22,4 +26,4 @@ types-pytz==2023.3.1.1
 types-PyYAML==6.0.12.12
 typing_extensions==4.8.0
 urllib3==2.1.0
-psycopg[binary]
+whitenoise==6.6.0
